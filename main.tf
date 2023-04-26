@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "ec2-user" {
-  ami           = "ami-02eb7a4783e7e9317" # us-west-2
+  ami           = "ami-0f8ca728008ff5af4" 
   instance_type = "t2.micro"
   tags = {
       Name = "infra-server"
