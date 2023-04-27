@@ -8,28 +8,28 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-    
-        stage ("terraform init -reconfigure")
+       stage ("Terraform init") {
             steps {
                 sh ("terraform init") 
             }
         }
         
-        stage ("plan") {
+        stage ("Validate") {
+            steps {
+                sh ('terraform validate')
+            }
+        }
+        
+        stage ("Plan") {
             steps {
                 sh ('terraform plan') 
             }
         }
 
-        stage (" Action") {
+        stage ("Action") {
             steps {
-                echo "Terraform action is --> ${action}"
-                sh ('terraform ${action} --auto-approve')
+                 echo "Terraform action is --> ${action}"
+                 sh ('terraform ${action} -auto-approve')
            }
         }
     }
