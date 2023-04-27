@@ -16,13 +16,13 @@ pipeline {
     
         stage ("terraform init") {
             steps {
-                bat ("terraform init") 
+                sh ("terraform init") 
             }
         }
         
         stage ("plan") {
             steps {
-                bat ('terraform plan') 
+                sh ('terraform plan') 
             }
         }
 
